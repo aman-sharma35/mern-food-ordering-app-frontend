@@ -1,16 +1,14 @@
-//in here is going to have all the hooks that we are going to need to interact with the my user API endpoint
-
 import { User } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation, useQuery } from "react-query";
 import { toast } from "sonner";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; //we're going to store the API base URL in environment variables so that whenever we deploy our code it makes it easy to change the backend address to be that of the backend address of render.com where we are going to deloy 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const useGetMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const getMyUserRequest = async (): Promise<User>=> {
+  const getMyUserRequest = async (): Promise<User> => {
     const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
@@ -32,7 +30,7 @@ export const useGetMyUser = () => {
     data: currentUser,
     isLoading,
     error,
-  } = useQuery("fetchCurrentUser", getMyUserRequest); // when we want to use fetch data we use query hook
+  } = useQuery("fetchCurrentUser", getMyUserRequest);
 
   if (error) {
     toast.error(error.toString());
@@ -42,11 +40,10 @@ export const useGetMyUser = () => {
 };
 
 type CreateUserRequest = {
-  auth0Id: string,
-  email: string,
-}
+  auth0Id: string;
+  email: string;
+};
 
-//we can create a hook that our components can use to call our endpoint
 export const useCreateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
@@ -71,7 +68,7 @@ export const useCreateMyUser = () => {
     isLoading,
     isError,
     isSuccess,
-  } = useMutation(createMyUserRequest);  // what this does is we are passing our VCH request to to the use mutation hook down here which is going to manage things like loading his error and his success and also gives us a function to call our function called mutate async which we have just renamed ourselves to createUser
+  } = useMutation(createMyUserRequest);
 
   return {
     createUser,

@@ -1,9 +1,9 @@
-import hero from "../assets/hero.png";
+import hero1 from "../assets/hero1.webp";
 
 const Hero = () => {
   return (
     <div>
-      <img src={hero} className="w-full max-h-[600px] object-cover"/>
+      <img src={hero1} className="w-full max-h-[600px] object-contain"/>
     </div>
   )
 }

@@ -23,10 +23,10 @@ const MobileNav = () => {
             <span>Welcome to QuickBite!</span>
           )}
         </SheetTitle>
-        <Separator/>
+        <Separator />
 
         <SheetDescription className="flex flex-col gap-4">
-        {isAuthenticated ? (
+          {isAuthenticated ? (
             <MobileNavLinks />
           ) : (
             <Button

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import MobileNav from "./MobileNav";
 import MainNav from "./MainNav";
+import logo from "../assets/logo1.png";
 
 const Header = () => {
     return (
@@ -10,7 +11,7 @@ const Header = () => {
                     to="/"
                     className="text-3xl font-bold tracking-tight text-orange-500"
                 >
-                    <img src='src/assets/logo1.png' alt="Logo" className="inline-block h-12 w-auto mx-2" />
+                    <img src={logo} className="inline-block h-12 w-auto mx-2" />
                     QuickBite
                 </Link>
                 <div className="md:hidden">
